@@ -1,8 +1,9 @@
 import { async } from 'regenerator-runtime';
 import {CONFIG_URL, ARTIC_URL} from "../config";
 import icons from 'url:../img/icons.svg';
+import 'regenerator-runtime/runtime';
 
-const artworkContainer = document.querySelector('artworks');
+const artworkContainer = document.querySelector('.artworks');
 
 const timeout = function (s) {
     return new Promise(function (_, reject) {
@@ -15,8 +16,24 @@ const timeout = function (s) {
 //  https://api.artic.edu/docs/
 
 ////////////////////////////////////
+
+const renderSpinner = function (parentEl) {
+    const markup = `
+    <div class="spinner">
+          <svg>
+            <use href="${icons}#icon-loader"></use>
+          </svg>
+        </div>
+
+    `;
+    parentEl.innerHTML = '';
+    parentEl.insertAdjacentHTML('afterbegin', markup);
+}
+
+
 const showArtworks = async function () {
     try {
+        renderSpinner(artworkContainer);
 const art = await fetch(
     " https://api.artic.edu/api/v1/artworks/14556");
 const dates = await art.json();
@@ -117,8 +134,8 @@ ${data.term_titles.map(term => {
                 print
               </div>
             </li>
-            `;
-}).join('')};
+            `
+}).join('')}
             
           
         </div>
