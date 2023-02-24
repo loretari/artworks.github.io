@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+            href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700"
+            rel="stylesheet"
+    />
+    <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet" />
+    <link
+            rel="shortcut icon"
+            href="src/img/icons8-picasso-96.png"
+            type="image/x-icon"
+    />
+
+    <link rel="stylesheet" href="src/sass/main.scss" />
+    <script type="module" defer src="src/js/controller.js"></script>
+
+    <title>artworks // Search over 1,000,000 works of art</title>
+</head>
+
+<body>
+<div class="container">
+    <header class="header">
+        <img src="src/img/logo-02.png" alt="Logo" class="header__logo" />
+        <form class="search">
+            <input
+                    type="text"
+                    class="search__field"
+                    placeholder="Search over 1,000,000 works of art..."
+            />
+            <button class="btn search__btn">
+                <svg class="search__icon">
+                    <use href="src/img/icons.svg#icon-search"></use>
+                </svg>
+                <span>Search</span>
+            </button>
+        </form>
+
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <button class="nav__btn nav__btn--add-recipe">
+                        <svg class="nav__icon">
+                            <use href="src/img/icons.svg#icon-edit"></use>
+                        </svg>
+                        <span>Add artwork</span>
+                    </button>
+                </li>
+                <li class="nav__item">
+                    <button class="nav__btn nav__btn--bookmarks">
+                        <svg class="nav__icon">
+                            <use href="src/img/icons.svg#icon-bookmark"></use>
+                        </svg>
+                        <span>Bookmarks</span>
+                    </button>
+                    <div class="bookmarks">
+                        <ul class="bookmarks__list">
+                            <div class="message">
+                                <div>
+                                    <!-- <svg>
+                                      <use href="src/img/icons.svg#icon-smile"></use>
+                                    </svg> -->
+                                    <i
+                                            class="em em-b"
+                                            aria-role="presentation"
+                                            aria-label="NEGATIVE SQUARED LATIN CAPITAL LETTER B"
+                                    ></i>
+                                </div>
+                                <p>
+                                    No bookmarks yet. Find an impressive artwork and bookmark
+                                    it!
+                                </p>
+                            </div>
+
+                            <!-- <li class="preview">
+                              <a class="preview__link" href="#23456">
+                                <figure class="preview__fig">
+                                  <img src="src/img/test-1.jpg" alt="Test" />
+                                </figure>
+                                <div class="preview__data">
+                                  <h4 class="preview__name">
+                                    Artworks by Salvador Dali
+                                  </h4>
+                                  <p class="preview__publisher">Salvador Dali</p>
+                                </div>
+                              </a>
+                            </li> -->
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="search-results">
+        <ul class="results">
+             <a href="#14556">Artist 1</a>
+            <a href="#11434">Artist 2</a>
+            <!--
+            <li class="preview">
+              <a class="preview__link preview__link--active" href="#23456">
+                <figure class="preview__fig">
+                  <img src="src/img/test-1.jpg" alt="Test" />
+                </figure>
+                <div class="preview__data">
+                  <h4 class="preview__title">Artworks by Salvador Dali</h4>
+                  <p class="preview__publisher">Salvador Dali</p>
+                  <div class="preview__user-generated">
+                    <svg>
+                      <use href="src/img/icons.svg#icon-user"></use>
+                    </svg>
+                  </div>
+                </div>
+              </a>
+            </li>
+             -->
+        </ul>
+
+        <div class="pagination">
+            <!-- <button class="btn--inline pagination__btn--prev">
+              <svg class="search__icon">
+                <use href="src/img/icons.svg#icon-arrow-left"></use>
+              </svg>
+              <span>Page 1</span>
+            </button>
+            <button class="btn--inline pagination__btn--next">
+              <span>Page 3</span>
+              <svg class="search__icon">
+                <use href="src/img/icons.svg#icon-arrow-right"></use>
+              </svg>
+            </button> -->
+        </div>
+
+        <p class="copyright">
+            &copy; Copyright by
+            <a
+                    class="github-link"
+                    target="_blank"
+                    href="https://github.com/loretari"
+            >LORA & IG</a
+            >. Use for learning or your portfolio. Don't use to teach. Don't claim
+            as your own.
+        </p>
+    </div>
+
+<!--    <div class="recipe">-->
+        <div class="artworks">
+        <div class="message">
+            <div>
+                <svg>
+                    <use href="src/img/icons.svg#icon-smile"></use>
+                </svg>
+            </div>
+            <p>Start by searching for an artwork. Have fun!</p>
+        </div>
+
+        <!-- <div class="spinner">
+          <svg>
+            <use href="src/img/icons.svg#icon-loader"></use>
+          </svg>
+        </div> -->
+
+        <!-- <div class="error">
+            <div>
+              <svg>
+                <use href="src/img/icons.svg#icon-alert-triangle"></use>
+              </svg>
+            </div>
+            <p>No artworks found for your query. Please try again!</p>
+          </div> -->
+
+        <!--
+        <figure class="artworks__fig">
+          <img src="src/img/test-1.jpg" alt="Salvador" class="artworks__img" />
+          <h1 class="artworks__title">
+            <span>Inventions of the monsters</span>
+          </h1>
+        </figure>
+<div class="artworks__article" aria-label="Additional information">
+
+    <h1 class="artworks__info-article">
+   On View:
+    </h1>
+
+            <ul class="artworks__article-list artworks__info-text">
+                            <li><a class ="artworks__info-text"  href="https://www.artic.edu/departments/PC-10/painting-and-sculpture-of-europe" data-gtm-event="Painting and Sculpture of Europe" data-gtm-event-category="collection-nav">Painting and Sculpture of Europe</a></li>
+                                        <li><a class= "artworks__info-text" href="https://www.artic.edu/galleries/2147478672/gallery-240" data-gtm-event="Gallery 240" data-gtm-event-category="collection-nav">Gallery 240</a></li>
+                    </ul>
+                   <div class="artworks__user-generated">
+                    <svg>
+                      <use href="src/img/icons.svg#icon-user"></use>
+                    </svg>
+
+                   </div>
+                     <button class="btn--round">
+                    <svg>
+                      <use href="src/img/icons.svg#icon-bookmark-fill"></use>
+                    </svg>
+                  </button>
+
+
+          </div>
+        <div class="artworks__details">
+          <div class="artworks__info">
+                     <span class="space artworks__info-text">was performed in:</span>
+                        <span class="artworks__info-data artworks__info-data--minutes">1937</span>
+          </div>
+          <div class="artworks__info">
+           <span class="space artworks__info-text">an artist:</span>
+            <span class="space artworks__info-data artworks__info-data--people">Salvador Dali</span>
+  </div>
+ <div class="artworks__info">
+           <span class="space artworks__info-text">type of artwork:</span>
+            <span class="space artworks__info-data artworks__info-data--people">PAINTING</span>
+  </div>
+   <div class="artworks__info">
+           <span class="space artworks__info-text">category title:</span>
+            <span class="space artworks__info-data artworks__info-data--people">modern art</span>
+  </div>
+       </div>
+
+
+        <div class="artworks__categories">
+          <h2 class="heading--2">Category of terminology</h2>
+          <ul class="artworks__category-list">
+
+            <li class="artworks__category">
+              <svg class="artworks__icon">
+                <use href="src/img/icons.svg#icon-check"></use>
+              </svg>
+              <div class="artworks__quantity"></div>
+              <div class="artworks__description">
+                <span class="artworks__unit"></span>
+                painting
+              </div>
+            </li>
+
+             <li class="artworks__category">
+              <svg class="artworks__icon">
+                <use href="src/img/icons.svg#icon-check"></use>
+              </svg>
+              <div class="artworks__quantity"></div>
+              <div class="artworks__description">
+                <span class="artworks__unit"></span>
+                painting
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="artworks__directions">
+          <h2 class="heading--2">description</h2>
+          <p class="artworks__directions-text">
+            This artwork was created by
+            <span class="artworks__publisher">Salvador Dali</span>. You can find out more about this work at the Art Institute Chicago website.
+          </p>
+          <a
+            class="btn--small recipe__btn"
+            href="https://www.artic.edu/artworks/151424/inventions-of-the-monsters"
+            target="_blank"
+          >
+            <span>Directions</span>
+            <svg class="search__icon">
+              <use href="src/img/icons.svg#icon-arrow-right"></use>
+            </svg>
+          </a>
+        </div>
+        -->
+    </div>
+</div>
+
+<div class="overlay hidden"></div>
+<div class="add-artwork-window hidden">
+    <button class="btn--close-modal">&times;</button>
+    <form class="upload">
+        <div class="upload__column">
+            <h3 class="upload__heading">Artwork's data</h3>
+            <label>Title</label>
+            <input value="TEST" required name="title" type="text" />
+            <label>URL</label>
+            <input value="TEST" required name="sourceUrl" type="text" />
+            <label>Image URL</label>
+            <input value="TEST" required name="image" type="text" />
+            <label>An artist</label>
+            <input value="TEST" required name="artis" type="text" />
+            <label>was performed in</label>
+            <input value="23" required name="performedIn" type="number" />
+            <label>Type of artwork</label>
+            <input value="23" required name="typeOf" type="number" />
+        </div>
+
+        <div class="upload__column">
+            <h3 class="upload__heading">Categories</h3>
+            <label>Category 1</label>
+            <input
+                    type="text"
+                    required
+                    name="category-1"
+                    placeholder="Format: 'Quantity,Unit,Description'"
+            />
+            <label>Category 2</label>
+            <input
+                    type="text"
+                    name="category-2"
+                    placeholder="Format: 'Quantity,Unit,Description'"
+            />
+            <label>Category 3</label>
+            <input
+                    type="text"
+                    name="category-3"
+                    placeholder="Format: 'Quantity,Unit,Description'"
+            />
+            <label>Category 4</label>
+            <input
+                    type="text"
+                    name="category-4"
+                    placeholder="Format: 'Quantity,Unit,Description'"
+            />
+            <label>Category 5</label>
+            <input
+                    type="text"
+                    name="category-5"
+                    placeholder="Format: 'Quantity,Unit,Description'"
+            />
+            <label>Category 6</label>
+            <input
+                    type="text"
+                    name="category-6"
+                    placeholder="Format: 'Quantity,Unit,Description'"
+            />
+        </div>
+
+        <button class="btn upload__btn">
+            <svg>
+                <use href="src/img/icons.svg#icon-upload-cloud"></use>
+            </svg>
+            <span>Upload</span>
+        </button>
+    </form>
+</div>
+</body>
+</html>
