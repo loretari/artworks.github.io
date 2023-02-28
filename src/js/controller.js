@@ -1,19 +1,16 @@
 import { async } from 'regenerator-runtime';
 import {CONFIG_URL, ARTIC_URL} from "./config";
+import {state} from "./model";
+import searchView from "./views/searchView"
+import resultsView from "./views/resultsView";
 
 import 'regenerator-runtime/runtime';
 import * as model from './model';
-import artworkView from "./Views/artworkView";
+import artworkView from "./views/artworkView";
 
 const artworkContainer = document.querySelector('.artworks');
 
-const timeout = function (s) {
-    return new Promise(function (_, reject) {
-        setTimeout(function () {
-            reject (new Error(`Request took too long! Timeout after 20 second`));
-        }, s * 1000);
-    });
-};
+
 
 //  https://api.artic.edu/docs/
 
@@ -49,7 +46,26 @@ console.log(config);
         artworkView.renderError();
     }
 };
+
+const controlSearchResults = async function () {
+    try {
+resultsView.renderSpinner();
+    //     1) Get search results
+const query = searchView.getQuery();
+if (!query) return;
+
+// 2) Load search results
+await model.loadSearchResults(query);
+
+    // 3) Render results
+        resultsView.render(model.state.search.results);
+    } catch (err) {
+        console.log(err);
+    }
+};
+
 const init = function () {
     artworkView.addHandlerRender(controlArtworks);
+    searchView.addHandlerSearch(controlSearchResults);
 };
 init();
