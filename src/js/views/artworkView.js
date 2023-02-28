@@ -1,71 +1,22 @@
 import {ARTIC_URL, CONFIG_URL, WEBSITE_URL} from "../config";
 import icons from 'url:../../img/icons.svg';
+import View from "./View.js";
 
-class ArtworkView {
+class ArtworkView extends View{
     _parentElement = document.querySelector('.artworks');
-    _data;
-    _errorMessage = 'No artworks found for your query. Please try again!';
+
+    _errorMessage = 'We could not find for your query. Please try another one!';
     _message = '';
 
-    render(data) {
-        this._data = data;
-        const markup = this._generateMarkup();
-        this._clear();
-        this._parentElement.insertAdjacentHTML('afterbegin', markup);
-    }
 
-    _clear() {
-        this._parentElement.innerHTML = '';
-    }
-
-    renderSpinner = function () {
-        const markup = `
-    <div class="spinner">
-          <svg>
-            <use href="${icons}#icon-loader"></use>
-          </svg>
-        </div>
-
-    `;
-        this._parentElement.innerHTML = '';
-        this._parentElement.insertAdjacentHTML('afterbegin', markup);
-    }
 
     addHandlerRender (handler) {
         ['hashchange', 'load'].forEach(ev => window.addEventListener(ev, handler));
     }
 
-renderError (message = this._errorMessage) {
-        const markup = `
-        <div class="error">
-            <div>
-              <svg>
-                <use href="${icons}#icon-alert-triangle"></use>
-              </svg>
-            </div>
-            <p>${message}</p>
-          </div>
-        
-        `;
-        this._clear();
-        this._parentElement.insertAdjacentHTML('afterbegin', markup);
-}
 
-renderMessage (message = this._message) {
-    const markup = `
-        <div class="error">
-            <div>
-              <svg>
-                <use href="${icons}#icon-alert-triangle"></use>
-              </svg>
-            </div>
-            <p>${message}</p>
-          </div>
-        
-        `;
-    this._clear();
-    this._parentElement.insertAdjacentHTML('afterbegin', markup);
-};
+
+
     _generateMarkup() {
         return `
  <figure class="artworks__fig">

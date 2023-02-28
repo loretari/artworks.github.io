@@ -6,7 +6,12 @@ import {API_URL} from "./config";
 export const state = {
     data: {},
     config: {},
-}
+    search: {
+        query: '',
+        results: [],
+
+    },
+};
 
 export const loadArtwork = async function (id) {
     try {
@@ -53,5 +58,30 @@ export const loadArtwork = async function (id) {
     }
 
 }
+
+export const loadSearchResults = async function (query) {
+    try {
+        state.search.query = query;
+        const dates = await getJSON(`${API_URL}search?q=${query}`);
+        console.log(dates);
+
+
+state.search.results = dates.data.map(art => {
+    return {
+        id: art.id,
+        api_link: art.api_link,
+        model: art.api_model,
+        title: art.title,
+    };
+});
+console.log(state.search.results)
+    } catch (err) {
+        console.error(`${err}`);
+        throw err;
+
+    }
+}
+
+
 
 
