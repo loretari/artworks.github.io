@@ -48,4 +48,7 @@ console.log(config);
         console.log(err);
     }
 };
-['hashchange', 'load'].forEach(ev => window.addEventListener(ev, controlArtworks));
+const init = function () {
+    artworkView.addHandlerRender(controlArtworks);
+};
+init();
