@@ -46,6 +46,7 @@ console.log(config);
 
     } catch (err) {
         console.log(err);
+        artworkView.renderError();
     }
 };
 const init = function () {

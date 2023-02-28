@@ -4,6 +4,8 @@ import icons from 'url:../../img/icons.svg';
 class ArtworkView {
     _parentElement = document.querySelector('.artworks');
     _data;
+    _errorMessage = 'No artworks found for your query. Please try again!';
+    _message = '';
 
     render(data) {
         this._data = data;
@@ -33,7 +35,37 @@ class ArtworkView {
         ['hashchange', 'load'].forEach(ev => window.addEventListener(ev, handler));
     }
 
+renderError (message = this._errorMessage) {
+        const markup = `
+        <div class="error">
+            <div>
+              <svg>
+                <use href="${icons}#icon-alert-triangle"></use>
+              </svg>
+            </div>
+            <p>${message}</p>
+          </div>
+        
+        `;
+        this._clear();
+        this._parentElement.insertAdjacentHTML('afterbegin', markup);
+}
 
+renderMessage (message = this._message) {
+    const markup = `
+        <div class="error">
+            <div>
+              <svg>
+                <use href="${icons}#icon-alert-triangle"></use>
+              </svg>
+            </div>
+            <p>${message}</p>
+          </div>
+        
+        `;
+    this._clear();
+    this._parentElement.insertAdjacentHTML('afterbegin', markup);
+};
     _generateMarkup() {
         return `
  <figure class="artworks__fig">
