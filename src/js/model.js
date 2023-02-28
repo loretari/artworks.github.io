@@ -1,5 +1,7 @@
 import {async} from "regenerator-runtime";
 import 'regenerator-runtime';
+import {getJSON} from "./helpers";
+import {API_URL} from "./config";
 
 export const state = {
     data: {},
@@ -8,11 +10,12 @@ export const state = {
 
 export const loadArtwork = async function (id) {
     try {
-        const art = await fetch(
-             `https://api.artic.edu/api/v1/artworks/${id}`);
-        const dates = await art.json();
-        if (!art.ok) throw new Error(`${dates.message} (${art.status})`);
-        console.log(art, dates);
+
+
+        // const art = await fetch(
+        //      `https://api.artic.edu/api/v1/artworks/${id}`);
+        const dates = await getJSON(`${API_URL}${id}`)
+
 
         let data = dates.data;
         state.data = {
