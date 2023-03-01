@@ -1,22 +1,17 @@
 import { async } from 'regenerator-runtime';
 import {CONFIG_URL, ARTIC_URL} from "./config";
 import {state} from "./model";
-import searchView from "./views/searchView"
+import searchView from "./views/searchView";
 import resultsView from "./views/resultsView";
 
 import 'regenerator-runtime/runtime';
 import * as model from './model';
 import artworkView from "./views/artworkView";
 
-const artworkContainer = document.querySelector('.artworks');
-
-
 
 //  https://api.artic.edu/docs/
 
 ////////////////////////////////////
-
-
 
 
 const controlArtworks = async function () {
@@ -50,13 +45,13 @@ console.log(config);
 const controlSearchResults = async function () {
     try {
 resultsView.renderSpinner();
-    //     1) Get search results
+//     //     1) Get search results
 const query = searchView.getQuery();
 if (!query) return;
 
 // 2) Load search results
 await model.loadSearchResults(query);
-
+        console.log(model.state.search.results)
     // 3) Render results
         resultsView.render(model.state.search.results);
     } catch (err) {

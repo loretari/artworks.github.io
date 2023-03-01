@@ -6,16 +6,18 @@ class SearchView {
         this._clearInput();
         return query;
 }
+
+    addHandlerSearch (handler) {
+        this._parentEl.addEventListener('submit', function (e) {
+            e.preventDefault();
+            handler();
+        });
+    }
 _clearInput () {
        const query = (this._parentEl.querySelector('.search__field').value = '');
 };
 
-addHandlerSearch (handler) {
-        this._parentEl.addEventListener('.submit', function (e) {
-            e.preventDefault();
-            handler();
-        });
-}
+
 
 }
 export default new SearchView();
