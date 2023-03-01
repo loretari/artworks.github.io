@@ -10,7 +10,7 @@ import artworkView from "./views/artworkView";
 
 
 //  https://api.artic.edu/docs/
-
+// https://api.artic.edu/api/v1/artists/
 ////////////////////////////////////
 
 
@@ -53,7 +53,7 @@ if (!query) return;
 await model.loadSearchResults(query);
         console.log(model.state.search.results)
     // 3) Render results
-        resultsView.render(model.state.search.results);
+        resultsView.render(model.getSearchResultsPage(2));
     } catch (err) {
         console.log(err);
     }
