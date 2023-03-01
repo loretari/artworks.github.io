@@ -7,6 +7,7 @@ import resultsView from "./views/resultsView";
 import 'regenerator-runtime/runtime';
 import * as model from './model';
 import artworkView from "./views/artworkView";
+import paginationView from "./views/paginationView";
 
 
 //  https://api.artic.edu/docs/
@@ -53,14 +54,26 @@ if (!query) return;
 await model.loadSearchResults(query);
         console.log(model.state.search.results)
     // 3) Render results
-        resultsView.render(model.getSearchResultsPage(2));
+        resultsView.render(model.getSearchResultsPage());
+
+    //     4) Render initial pagination buttons
+        paginationView.render(model.state.search)
     } catch (err) {
         console.log(err);
     }
 };
 
+const controlPagination = function (gotToPage) {
+    // 3) Render  NEW results
+    resultsView.render(model.getSearchResultsPage(gotToPage));
+
+    //     4) Render NEW pagination buttons
+    paginationView.render(model.state.search)
+}
+
 const init = function () {
     artworkView.addHandlerRender(controlArtworks);
     searchView.addHandlerSearch(controlSearchResults);
+    paginationView.addHandlerClick(controlPagination);
 };
 init();
