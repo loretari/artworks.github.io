@@ -66,19 +66,22 @@ await model.loadSearchResults(query);
 };
 
 const controlPagination = function (gotToPage) {
-    // 3) Render  NEW results
+    // 1) Render  NEW results
     resultsView.render(model.getSearchResultsPage(gotToPage));
 
-    //     4) Render NEW pagination buttons
+    //     2) Render NEW pagination buttons
     paginationView.render(model.state.search)
+}
 
-
-
-
+const controlAddBookmark = function () {
+    model.addBookmark(model.state.data);
+    console.log(model.state.data);
+artworkView.update(model.state.data);
 }
 
 const init = function () {
     artworkView.addHandlerRender(controlArtworks);
+    artworkView.addHandlerBookmark(controlAddBookmark);
     searchView.addHandlerSearch(controlSearchResults);
     paginationView.addHandlerClick(controlPagination);
 };
