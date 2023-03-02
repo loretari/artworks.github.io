@@ -14,7 +14,13 @@ class ArtworkView extends View{
         ['hashchange', 'load'].forEach(ev => window.addEventListener(ev, handler));
     }
 
-
+addHandlerBookmark (handler) {
+        this._parentElement.addEventListener('click', function (e){
+            const btn = e.target.closest('.btn--bookmark');
+            if (!btn) return;
+            handler();
+        })
+}
 
 
     _generateMarkup() {
@@ -49,9 +55,9 @@ class ArtworkView extends View{
                     </svg>
 
                    </div>
-                     <button class="btn--round">
+                     <button class="btn--round btn--bookmark">
                     <svg>
-                      <use href="${icons}#icon-bookmark-fill"></use>
+                      <use href="${icons}#icon-bookmark ${this._data.bookmarked ? '-fill': ''}"></use>
                     </svg>
                   </button>
 

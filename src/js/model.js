@@ -12,6 +12,7 @@ export const state = {
         page: 1,
         resultsPerPage: RES_PER_PAGE,
     },
+    bookmarks:[],
 };
 
 export const loadArtwork = async function (id) {
@@ -89,6 +90,16 @@ state.search.page = page;
     const end = page*state.search.resultsPerPage; //9;
 console.log(start, end)
     return state.search.results.slice(start, end);
+}
+
+export const addBookmark = function (data) {
+//     Add bookmark
+    state.bookmarks.push(data);
+
+//     Mark current artwork as bookmark
+    if (data.id === state.data.id) state.data.bookmarked = true;
+
+
 }
 
 
