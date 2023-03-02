@@ -14,8 +14,7 @@ export default class View {
     }
 
 update (data) {
-    if (!data || (Array.isArray(data) && data.length === 0))
-        return this.renderError();
+
     this._data = data;
 
     const newMarkup = this._generateMarkup();
@@ -29,7 +28,7 @@ update (data) {
     newElements.forEach((newEl, i) => {
         const curEl = curElements[i];
         console.log(curEl, newEl.isEqualNode(curEl));
-    });
+
 
 //     Update change TEXT
     if (!newEl.isEqualNode(curEl) && newEl.firstChild?.nodeValue.trim() !== '') {
@@ -41,7 +40,7 @@ update (data) {
     if (!newEl.isEqualNode(curEl))
         console.log(Array.from(newEl.attributes));
         Array.from(newEl.attributes).forEach(attr => curEl.setAttribute(attr.name, attr.value));
-
+    });
 }
 
 

@@ -22,6 +22,7 @@ $color-grey-dark-2: #918581; // Lighter text
 // #dae1f3
 
 $gradient: linear-gradient(to right bottom, $color-grad-1, $color-grad-2);
+$gradient-red: linear-gradient(to right bottom, $color-grad-1, $color-primary);
 
 $bp-large: 78.15em; // 1250px
 $bp-medium: 61.25em; // 980px

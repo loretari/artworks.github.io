@@ -21,8 +21,10 @@ const controlArtworks = async function () {
         const id = window.location.hash.slice(1);
         console.log(id);
         if (!id) return;
-
         artworkView.renderSpinner();
+
+//         0) Update results view to mark selected search result
+        resultsView.update(model.getSearchResultsPage());
 
 // 1) Loading artworks
 
@@ -69,7 +71,7 @@ const controlPagination = function (gotToPage) {
 
     //     4) Render NEW pagination buttons
     paginationView.render(model.state.search)
-    paginationView.update(model.state.search)
+
 
 
 
