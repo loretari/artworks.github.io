@@ -74,7 +74,9 @@ const controlPagination = function (gotToPage) {
 }
 
 const controlAddBookmark = function () {
+    if (!model.state.data.bookmarked)
     model.addBookmark(model.state.data);
+    else model.deleteBookmark(model.state.data.id);
     console.log(model.state.data);
 artworkView.update(model.state.data);
 }
