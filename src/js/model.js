@@ -46,6 +46,11 @@ export const loadArtwork = async function (id) {
             department_title: data.department_title,
 
         };
+
+        if (state.bookmarks.some(bookmark => bookmark.id === id))
+            state.data.bookmarked = true;
+        else state.data.bookmarked = false;
+
         console.log(data);
 
         let config = dates.config;
@@ -88,7 +93,7 @@ export const getSearchResultsPage = function (page = state.search.page) {
 state.search.page = page;
     const start = (page-1)*state.search.resultsPerPage;//0;
     const end = page*state.search.resultsPerPage; //9;
-console.log(start, end)
+
     return state.search.results.slice(start, end);
 }
 
