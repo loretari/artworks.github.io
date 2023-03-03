@@ -110,10 +110,8 @@ export const deleteBookmark = function (id) {
     const index = state.bookmarks.findIndex(el => el.id === id);
     state.bookmarks.splice(index, 1)
 
-//     Mark currebt artwork as NOT bookmarked
+//     Mark current artwork as NOT bookmarked
     if (id === state.data.id) state.data.bookmarked = false;
 }
-
-
 
 
