@@ -51,7 +51,7 @@ export const loadArtwork = async function (id) {
             state.data.bookmarked = true;
         else state.data.bookmarked = false;
 
-        console.log(data);
+        console.log(data.id);
 
         let config = dates.config;
         state.config = {
@@ -104,7 +104,14 @@ export const addBookmark = function (data) {
 //     Mark current artwork as bookmark
     if (data.id === state.data.id) state.data.bookmarked = true;
 
+}
 
+export const deleteBookmark = function (id) {
+    const index = state.bookmarks.findIndex(el => el.id === id);
+    state.bookmarks.splice(index, 1)
+
+//     Mark currebt artwork as NOT bookmarked
+    if (id === state.data.id) state.data.bookmarked = false;
 }
 
 
