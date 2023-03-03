@@ -8,6 +8,7 @@ import 'regenerator-runtime/runtime';
 import * as model from './model';
 import artworkView from "./views/artworkView";
 import paginationView from "./views/paginationView";
+import bookmarkView from './views/bookmarksView'
 
 
 //  https://api.artic.edu/docs/
@@ -26,6 +27,7 @@ const controlArtworks = async function () {
 //         0) Update results view to mark selected search result
         resultsView.update(model.getSearchResultsPage());
 
+
 // 1) Loading artworks
 
 await model.loadArtwork(id);
@@ -37,7 +39,7 @@ const config= model.state;
 
 // 2) Rendering artworks
       artworkView.render(model.state.data);
-
+        bookmarkView.render(model.state.bookmarks);
 
     } catch (err) {
         console.log(err);
@@ -74,11 +76,19 @@ const controlPagination = function (gotToPage) {
 }
 
 const controlAddBookmark = function () {
+    // 1) add/remove book,ark
     if (!model.state.data.bookmarked)
     model.addBookmark(model.state.data);
     else model.deleteBookmark(model.state.data.id);
-    console.log(model.state.data);
+    // console.log(model.state.data);
+
+//     2) Update recipe view
 artworkView.update(model.state.data);
+
+// 3 Render bookmarks
+    bookmarkView.render(model.state.bookmarks);
+
+
 }
 
 const init = function () {
