@@ -32,7 +32,7 @@ await model.loadArtwork(id);
 const data  = model.state;
 console.log(data);
 const config= model.state;
-console.log(config);
+// console.log(config);
 
 
 // 2) Rendering artworks
