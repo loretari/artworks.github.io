@@ -82,7 +82,7 @@ const controlAddBookmark = function () {
     else model.deleteBookmark(model.state.data.id);
     // console.log(model.state.data);
 
-//     2) Update recipe view
+//     2) Update artwork view
 artworkView.update(model.state.data);
 
 // 3 Render bookmarks
