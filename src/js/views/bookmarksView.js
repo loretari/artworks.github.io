@@ -18,7 +18,10 @@ class BookmarksView extends View{
         <li class="preview">
                               <a class="preview__link" href="#${result.id}">
                                 <div class="preview__data">
-                                 <p class="preview__date">${result.date_display}</p>
+
+                              <p class="preview__publisher "> Was performed in: </p>
+<h4 class="preview__title">${result.date_display}</h4>
+                                 
                                 </div>
                                 <div class="preview__data">
                                   <h4 class="preview__title">
