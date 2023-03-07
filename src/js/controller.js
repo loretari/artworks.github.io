@@ -9,6 +9,7 @@ import * as model from './model';
 import artworkView from "./views/artworkView";
 import paginationView from "./views/paginationView";
 import bookmarkView from './views/bookmarksView'
+import addArtworkView from "./views/addArtworkView";
 
 
 //  https://api.artic.edu/docs/
