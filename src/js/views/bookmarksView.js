@@ -1,5 +1,7 @@
 import View from "./View";
+import previewView from "./previewView";
 import icons from 'url:../../img/icons.svg';
+
 
 class BookmarksView extends View{
     _parentElement = document.querySelector('.bookmarks__list');
@@ -9,7 +11,7 @@ class BookmarksView extends View{
 
     _generateMarkup() {
         console.log(this._data);
-        return this._data.map(this._generateMarkupPreview).join('');
+        return this._data.map(bookmark => previewView.render(bookmark, false)).join('');
     }
     _generateMarkupPreview (result) {
         const id = window.location.hash.slice(1);
@@ -21,7 +23,7 @@ class BookmarksView extends View{
 
                               <p class="preview__publisher "> Was performed in: </p>
 <h4 class="preview__title">${result.date_display}</h4>
-                                 
+
                                 </div>
                                 <div class="preview__data">
                                   <h4 class="preview__title">
