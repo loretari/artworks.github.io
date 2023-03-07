@@ -97,13 +97,17 @@ state.search.page = page;
     return state.search.results.slice(start, end);
 }
 
+const persistBookmark = function () {
+    localStorage.setItem('bookmarks', JSON.stringify(state.bookmarks));
+}
+
 export const addBookmark = function (data) {
 //     Add bookmark
     state.bookmarks.push(data);
 
 //     Mark current artwork as bookmark
     if (data.id === state.data.id) state.data.bookmarked = true;
-
+persistBookmark();
 }
 
 export const deleteBookmark = function (id) {
@@ -112,6 +116,7 @@ export const deleteBookmark = function (id) {
 
 //     Mark current artwork as NOT bookmarked
     if (id === state.data.id) state.data.bookmarked = false;
+    persistBookmark();
 }
 
 
