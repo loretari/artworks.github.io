@@ -26,9 +26,11 @@ const controlArtworks = async function () {
 
 //         0) Update results view to mark selected search result
         resultsView.update(model.getSearchResultsPage());
+
+        // 1) Update bookmarks view
         bookmarkView.update(model.state.bookmarks);
 
-// 1) Loading artworks
+// 2) Loading artworks
 
 await model.loadArtwork(id);
 const data  = model.state;
@@ -37,13 +39,15 @@ const config= model.state;
 // console.log(config);
 
 
-// 2) Rendering artworks
+// 3) Rendering artworks
       artworkView.render(model.state.data);
 
 
+
     } catch (err) {
-        console.log(err);
+        // console.log(err);
         artworkView.renderError();
+        console.error(err)
     }
 };
 
@@ -88,10 +92,14 @@ artworkView.update(model.state.data);
 // 3 Render bookmarks
     bookmarkView.render(model.state.bookmarks);
 
+}
 
+const controlBookmarks = function () {
+    bookmarkView.render(model.state.bookmarks);
 }
 
 const init = function () {
+    bookmarkView.addHandlerBookmarks(controlBookmarks);
     artworkView.addHandlerRender(controlArtworks);
     artworkView.addHandlerBookmark(controlAddBookmark);
     searchView.addHandlerSearch(controlSearchResults);

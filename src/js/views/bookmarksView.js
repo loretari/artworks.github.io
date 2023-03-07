@@ -9,6 +9,11 @@ class BookmarksView extends View{
     _errorMessage =  ' No bookmarks yet. Find a impressive artwork and bookmark it!';
     _message = '';
 
+    addHandlerBookmarks (handler) {
+        window.addEventListener('load', handler);
+    }
+
+
     _generateMarkup() {
         console.log(this._data);
         return this._data.map(this._generateMarkupPreview).join('');
