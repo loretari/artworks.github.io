@@ -11,7 +11,7 @@ class BookmarksView extends View{
 
     _generateMarkup() {
         console.log(this._data);
-        return this._data.map(bookmark => previewView.render(bookmark, false)).join('');
+        return this._data.map(this._generateMarkupPreview).join('');
     }
     _generateMarkupPreview (result) {
         const id = window.location.hash.slice(1);
