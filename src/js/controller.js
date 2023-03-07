@@ -99,11 +99,18 @@ const controlBookmarks = function () {
     bookmarkView.render(model.state.bookmarks);
 }
 
+const controlAddArtwork = function (newArtwork) {
+    console.log(newArtwork);
+}
+// Upload
+
+
 const init = function () {
     bookmarkView.addHandlerBookmarks(controlBookmarks);
     artworkView.addHandlerRender(controlArtworks);
     artworkView.addHandlerBookmark(controlAddBookmark);
     searchView.addHandlerSearch(controlSearchResults);
     paginationView.addHandlerClick(controlPagination);
+    addArtworkView.addHandlerUpload(controlAddArtwork);
 };
 init();
