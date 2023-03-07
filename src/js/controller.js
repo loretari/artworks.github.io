@@ -26,7 +26,7 @@ const controlArtworks = async function () {
 
 //         0) Update results view to mark selected search result
         resultsView.update(model.getSearchResultsPage());
-
+        bookmarkView.update(model.state.bookmarks);
 
 // 1) Loading artworks
 
@@ -39,7 +39,7 @@ const config= model.state;
 
 // 2) Rendering artworks
       artworkView.render(model.state.data);
-        bookmarkView.render(model.state.bookmarks);
+
 
     } catch (err) {
         console.log(err);
