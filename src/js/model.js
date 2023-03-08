@@ -164,7 +164,7 @@ export const uploadArtwork = async function (newArtwork) {
         const dates = await sendJSON(`${API_URL}?key=${KEY}`, artworks);
         console.log(dates);
         state.data = createArtworkObject(dates);
-        addBookmark(state.data);
+        // addBookmark(state.data);
         console.log(artworks);
 
     } catch (err) {
