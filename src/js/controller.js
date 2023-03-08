@@ -99,8 +99,15 @@ const controlBookmarks = function () {
     bookmarkView.render(model.state.bookmarks);
 }
 
-const controlAddArtwork = function (newArtwork) {
-    console.log(newArtwork);
+const controlAddArtwork = async function (newArtwork) {
+    try {
+        // console.log(newArtwork);
+        await model.uploadArtwork(newArtwork);
+    } catch (err) {
+        console.error(err);
+        addArtworkView.renderError(err.message);
+    }
+
 }
 // Upload
 

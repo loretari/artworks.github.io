@@ -129,3 +129,9 @@ const clearBookmarks = function () {
     localStorage.clear('bookmarks');
 }
 // clearBookmarks();
+
+export const uploadArtwork = async function (newArtwork) {
+    // console.log(Object.entries(newArtwork));
+    const categories = Object.entries(newArtwork).filter(entry => entry[0].startsWith('category') && entry[1] != '');
+    console.log(categories);
+}
