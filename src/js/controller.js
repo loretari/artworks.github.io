@@ -113,6 +113,13 @@ const controlAddArtwork = async function (newArtwork) {
     //     Success message
         addArtworkView.renderMessage();
 
+    //     Render bookmark view
+        bookmarkView.render(model.state.bookmarks);
+
+    //     Change ID in URL
+        window.history.pushState(null, '', `${model.state.data.id}`);
+        // window.history.back();
+
     //     Close form window
         setTimeout(function () {
             addArtworkView.toggleWindow()

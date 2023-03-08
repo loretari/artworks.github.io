@@ -10,6 +10,31 @@ const timeout = function (s) {
     });
 };
 
+export const AJAX = async function (url, uploadData = undefined) {
+    try {
+        const fetchPro = uploadData ?
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(uploadData),
+            }) : fetch(url);
+        const art = await Promise.race([fetch(url)])
+        const data = await art.json();
+
+        if (!art.ok) throw new Error(`${data.message} (${data.status})`);
+        return data;
+
+    } catch (err) {
+        throw err;
+
+    }
+};
+
+
+
+/*
 export const getJSON = async function (url) {
     try {
         const fetchPro = fetch(url);
@@ -46,3 +71,4 @@ export const sendJSON = async function (url, uploadData) {
         throw err;
     }
 };
+*/

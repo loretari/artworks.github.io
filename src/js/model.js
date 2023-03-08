@@ -1,7 +1,8 @@
 import {async} from "regenerator-runtime";
 import 'regenerator-runtime';
-import {getJSON, sendJSON} from "./helpers";
+// import {getJSON, sendJSON} from "./helpers";
 import {API_URL, RES_PER_PAGE, KEY} from "./config";
+import {AJAX} from "./helpers";
 
 export const state = {
     data: {},
@@ -47,7 +48,7 @@ export const loadArtwork = async function (id) {
 
         // const art = await fetch(
         //      `https://api.artic.edu/api/v1/artworks/${id}`);
-        const dates = await getJSON(`${API_URL}${id}`)
+        const dates = await AJAX(`${API_URL}${id}`)
 state.data = createArtworkObject(dates);
 
 
@@ -74,7 +75,7 @@ state.data = createArtworkObject(dates);
 export const loadSearchResults = async function (query) {
     try {
         state.search.query = query;
-        const dates = await getJSON(`${API_URL}search?q=${query}`);
+        const dates = await AJAX(`${API_URL}search?q=${query}`);
         console.log(dates);
 
 
@@ -161,7 +162,7 @@ export const uploadArtwork = async function (newArtwork) {
         };
 
 
-        const dates = await sendJSON(`${API_URL}?key=${KEY}`, artworks);
+        const dates = await AJAX(`${API_URL}?key=${KEY}`, artworks);
         console.log(dates);
         state.data = createArtworkObject(dates);
         addBookmark(state.data);
