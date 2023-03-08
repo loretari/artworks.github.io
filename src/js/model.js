@@ -15,6 +15,32 @@ export const state = {
     bookmarks:[],
 };
 
+const createArtworkObject = function (dates) {
+    let data = dates.data;
+    return {
+        id: data.id,
+        title: data.title,
+        thumbnail: data.thumbnail,
+        main_number: data.main_reference_number,
+        date_display: data.date_display,
+        artist_display: data.artist_display,
+        image: data.image_id,
+        date_start: data.date_start,
+        data_end: data.date_end,
+        display: data.medium_display,
+        api_model: data.artwork_type_title,
+        text: data.publication_history,
+        term_titles: data.term_titles,
+        category_titles: data.category_titles,
+        artist_title: data.artist_title,
+        gallery: data.gallery_id,
+        department: data.department_id,
+        department_title: data.department_title,
+        ...(data.key && {key: data.key}),
+
+    };
+}
+
 export const loadArtwork = async function (id) {
     try {
 
@@ -22,36 +48,15 @@ export const loadArtwork = async function (id) {
         // const art = await fetch(
         //      `https://api.artic.edu/api/v1/artworks/${id}`);
         const dates = await getJSON(`${API_URL}${id}`)
+state.data = createArtworkObject(dates);
 
 
-        let data = dates.data;
-        state.data = {
-            id: data.id,
-            title: data.title,
-            thumbnail: data.thumbnail,
-            main_number: data.main_reference_number,
-            date_display: data.date_display,
-            artist_display: data.artist_display,
-            image: data.image_id,
-            date_start: data.date_start,
-            data_end: data.date_end,
-            display: data.medium_display,
-            api_model: data.artwork_type_title,
-            text: data.publication_history,
-            term_titles: data.term_titles,
-            category_titles: data.category_titles,
-            artist_title: data.artist_title,
-            gallery: data.gallery_id,
-            department: data.department_id,
-            department_title: data.department_title,
-
-        };
 
         if (state.bookmarks.some(bookmark => bookmark.id === id))
             state.data.bookmarked = true;
         else state.data.bookmarked = false;
 
-        console.log(data.id);
+        console.log(state.data);
 
         let config = dates.config;
         state.config = {
@@ -142,7 +147,8 @@ export const uploadArtwork = async function (newArtwork) {
                     throw new Error('Wrong categories format! Please use the correct format!');
                 const termTitle = categoryArr;
                 return {termTitle};
-            })
+                // console.log(categories);
+            });
 
 
         const artworks = {
@@ -152,11 +158,14 @@ export const uploadArtwork = async function (newArtwork) {
             category_titles: newArtwork.typeOf,
             artist_title: newArtwork.artist,
             categories,
-        }
-        console.log(artworks);
+        };
 
-        const data = await sendJSON(`${API_URL}?key=${KEY}`, artworks);
-        console.log(data);
+
+        const dates = await sendJSON(`${API_URL}?key=${KEY}`, artworks);
+        console.log(dates);
+        state.data = createArtworkObject(dates);
+        addBookmark(state.data);
+        console.log(artworks);
 
     } catch (err) {
         throw err;

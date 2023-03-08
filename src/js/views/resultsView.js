@@ -11,12 +11,12 @@ class ResultsView extends View{
 
 
     _generateMarkup() {
-        console.log(this._data);
+        // console.log(this._data);
         return this._data.map(this._generateMarkupPreview).join('');
     }
     _generateMarkupPreview (result) {
         const id = window.location.hash.slice(1);
-        console.log(result);
+        // console.log(result);
         return `
         <li class="preview">
               <a class="preview__link ${result.id === id ? "preview__link--active" : ''}" href="#${result.id}">

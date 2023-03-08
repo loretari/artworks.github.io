@@ -1,5 +1,5 @@
 import { async } from 'regenerator-runtime';
-import {CONFIG_URL, ARTIC_URL} from "./config";
+import {CONFIG_URL, ARTIC_URL, MODAL_CLOSE_SEC} from "./config";
 import {state} from "./model";
 import searchView from "./views/searchView";
 import resultsView from "./views/resultsView";
@@ -42,8 +42,6 @@ const config= model.state;
 
 // 3) Rendering artworks
       artworkView.render(model.state.data);
-
-
 
     } catch (err) {
         // console.log(err);
@@ -101,15 +99,32 @@ const controlBookmarks = function () {
 
 const controlAddArtwork = async function (newArtwork) {
     try {
-        // console.log(newArtwork);
+        // Show loading spinner
+        addArtworkView.renderSpinner();
+
+        // Upload the new artwork data
         await model.uploadArtwork(newArtwork);
+        console.log(newArtwork);
+        console.log(model.state.data);
+
+    //     Render artwork
+    //     artworkView.render(model.state.data);
+
+    //     Success message
+        addArtworkView.renderMessage();
+
+    //     Close form window
+        setTimeout(function () {
+            addArtworkView.toggleWindow()
+        }, MODAL_CLOSE_SEC * 1000);
+
     } catch (err) {
         console.error(err);
         addArtworkView.renderError(err.message);
     }
 
 }
-// Upload
+
 
 
 const init = function () {
