@@ -131,7 +131,34 @@ const clearBookmarks = function () {
 // clearBookmarks();
 
 export const uploadArtwork = async function (newArtwork) {
-    // console.log(Object.entries(newArtwork));
-    const categories = Object.entries(newArtwork).filter(entry => entry[0].startsWith('category') && entry[1] != '');
-    console.log(categories);
-}
+
+    try {
+        // console.log(Object.entries(newArtwork));
+        const categories = Object.entries(newArtwork).filter(entry => entry[0].startsWith('category') && entry[1] != '')
+            .filter(entry => entry[0].startsWith('category') && entry[1] !=='')
+            .map(category => {
+                const categoryArr = category[1].replaceAll(' ', '').split(',');
+                if (categoryArr.length !== 3)
+                    throw new Error('Wrong categories format! Please use the correct format!');
+                const termTitle = categoryArr;
+                return {termTitle};
+            })
+
+
+        const artworks = {
+            title: newArtwork.title,
+            image: newArtwork.image,
+            date_start: newArtwork.performedIn,
+            category_titles: newArtwork.typeOf,
+            artist_title: newArtwork.artist,
+            categories,
+
+
+        }
+        console.log(artworks);
+    } catch (err) {
+        throw err;
+    }
+
+
+    }
