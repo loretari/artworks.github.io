@@ -3,6 +3,7 @@ import icons from 'url:../../img/icons.svg';
 
 class AddArtworkView extends View {
     _parentElement = document.querySelector('.upload');
+    _message = 'Artwork was successfully uploaded';
 _window = document.querySelector('.add-artwork-window');
     _overlay = document.querySelector('.overlay');
     _btnOpen = document.querySelector('.nav__btn--add-recipe');

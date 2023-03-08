@@ -3,14 +3,14 @@ export default class View {
     _data;
     _config;
 
-    render(data, config, render= true) {
+    render(data, config) {
         if (!data || (Array.isArray(data) && data.length === 0))
             return this.renderError();
         this._data = data;
         this._config = config;
         const markup = this._generateMarkup();
 
-        if (!render) return markup;
+
 
 
         this._clear();
