@@ -1,7 +1,7 @@
 import {async} from "regenerator-runtime";
 import 'regenerator-runtime';
-import {getJSON} from "./helpers";
-import {API_URL, RES_PER_PAGE} from "./config";
+import {getJSON, sendJSON} from "./helpers";
+import {API_URL, RES_PER_PAGE, KEY} from "./config";
 
 export const state = {
     data: {},
@@ -152,10 +152,12 @@ export const uploadArtwork = async function (newArtwork) {
             category_titles: newArtwork.typeOf,
             artist_title: newArtwork.artist,
             categories,
-
-
         }
         console.log(artworks);
+
+        const data = await sendJSON(`${API_URL}?key=${KEY}`, artworks);
+        console.log(data);
+
     } catch (err) {
         throw err;
     }
