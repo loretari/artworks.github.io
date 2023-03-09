@@ -97,40 +97,40 @@ const controlBookmarks = function () {
     bookmarksView.render(model.state.bookmarks);
 };
 
-const controlAddArtwork = async function (newArtwork) {
-    try {
-        // Show loading spinner
-        addArtworkView.renderSpinner();
-
-        // Upload the new artwork data
-        await model.uploadArtwork(newArtwork);
-        console.log(newArtwork);
-        console.log(model.state.data);
-
-    //     Render artwork
-    //     artworkView.render(model.state.data);
-
-    //     Success message
-        addArtworkView.renderMessage();
-
-    //     Render bookmark view
-        bookmarksView.render(model.state.bookmarks);
-
-    //     Change ID in URL
-        window.history.pushState(null, '', `${model.state.data.id}`);
-        // window.history.back();
-
-    //     Close form window
-        setTimeout(function () {
-            addArtworkView.toggleWindow()
-        }, MODAL_CLOSE_SEC * 1000);
-
-    } catch (err) {
-        console.error(err);
-        addArtworkView.renderError(err.message);
-    }
-
-}
+// const controlAddArtwork = async function (newArtwork) {
+//     try {
+//         // Show loading spinner
+//         addArtworkView.renderSpinner();
+//
+//         // Upload the new artwork data
+//         await model.uploadArtwork(newArtwork);
+//         console.log(newArtwork);
+//         console.log(model.state.data);
+//
+//     //     Render artwork
+//     //     artworkView.render(model.state.data);
+//
+//     //     Success message
+//         addArtworkView.renderMessage();
+//
+//     //     Render bookmark view
+//         bookmarksView.render(model.state.bookmarks);
+//
+//     //     Change ID in URL
+//         window.history.pushState(null, '', `${model.state.data.id}`);
+//         // window.history.back();
+//
+//     //     Close form window
+//         setTimeout(function () {
+//             addArtworkView.toggleWindow()
+//         }, MODAL_CLOSE_SEC * 1000);
+//
+//     } catch (err) {
+//         console.error(err);
+//         addArtworkView.renderError(err.message);
+//     }
+//
+// }
 
 
 
@@ -140,6 +140,6 @@ const init = function () {
     artworkView.addHandlerBookmark(controlAddBookmark);
     searchView.addHandlerSearch(controlSearchResults);
     paginationView.addHandlerClick(controlPagination);
-    addArtworkView.addHandlerUpload(controlAddArtwork);
+    // addArtworkView.addHandlerUpload(controlAddArtwork);
 };
 init();

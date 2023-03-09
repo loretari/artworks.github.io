@@ -136,41 +136,41 @@ const clearBookmarks = function () {
 }
 // clearBookmarks();
 
-export const uploadArtwork = async function (newArtwork) {
-
-    try {
-        // console.log(Object.entries(newArtwork));
-        const categories = Object.entries(newArtwork).filter(entry => entry[0].startsWith('category') && entry[1] != '')
-            .filter(entry => entry[0].startsWith('category') && entry[1] !=='')
-            .map(category => {
-                const categoryArr = category[1].replaceAll(' ', '').split(',');
-                if (categoryArr.length !== 3)
-                    throw new Error('Wrong categories format! Please use the correct format!');
-                const termTitle = categoryArr;
-                return {termTitle};
-                // console.log(categories);
-            });
-
-
-        const artworks = {
-            title: newArtwork.title,
-            image: newArtwork.image,
-            date_start: newArtwork.performedIn,
-            category_titles: newArtwork.typeOf,
-            artist_title: newArtwork.artist,
-            categories,
-        };
-
-
-        const dates = await AJAX(`${API_URL}?key=${KEY}`, artworks);
-        console.log(dates);
-        state.data = createArtworkObject(dates);
-        addBookmark(state.data);
-        console.log(artworks);
-
-    } catch (err) {
-        throw err;
-    }
-
-
-    }
+// export const uploadArtwork = async function (newArtwork) {
+//
+//     try {
+//         // console.log(Object.entries(newArtwork));
+//         const categories = Object.entries(newArtwork).filter(entry => entry[0].startsWith('category') && entry[1] != '')
+//             .filter(entry => entry[0].startsWith('category') && entry[1] !=='')
+//             .map(category => {
+//                 const categoryArr = category[1].replaceAll(' ', '').split(',');
+//                 if (categoryArr.length !== 3)
+//                     throw new Error('Wrong categories format! Please use the correct format!');
+//                 const termTitle = categoryArr;
+//                 return {termTitle};
+//                 // console.log(categories);
+//             });
+//
+//
+//         const artworks = {
+//             title: newArtwork.title,
+//             image: newArtwork.image,
+//             date_start: newArtwork.performedIn,
+//             category_titles: newArtwork.typeOf,
+//             artist_title: newArtwork.artist,
+//             categories,
+//         };
+//
+//
+//         const dates = await AJAX(`${API_URL}?key=${KEY}`, artworks);
+//         console.log(dates);
+//         state.data = createArtworkObject(dates);
+//         addBookmark(state.data);
+//         console.log(artworks);
+//
+//     } catch (err) {
+//         throw err;
+//     }
+//
+//
+//     }
