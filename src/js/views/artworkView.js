@@ -11,7 +11,7 @@ class ArtworkView extends View{
 
 
     addHandlerRender (handler) {
-        ['hashchange', 'load'].forEach(ev => window.addEventListener(ev, handler));
+        ['hashchange', 'load'].forEach(event => window.addEventListener(event, handler));
     }
 
 addHandlerBookmark (handler) {
@@ -56,7 +56,7 @@ addHandlerBookmark (handler) {
 
                    </div>
                      <button class="btn--round btn--bookmark">
-                    <svg>
+                    <svg class="">
                       <use href="${icons}#icon-bookmark ${this._data.bookmarked ? '-fill': ''}"></use>
                     </svg>
                   </button>
