@@ -8,7 +8,7 @@ import 'regenerator-runtime/runtime';
 import * as model from './model';
 import artworkView from "./views/artworkView";
 import paginationView from "./views/paginationView";
-import bookmarkView from './views/bookmarksView'
+import bookmarksView from './views/bookmarksView'
 import addArtworkView from "./views/addArtworkView";
 
 
@@ -29,7 +29,7 @@ const controlArtworks = async function () {
         resultsView.update(model.getSearchResultsPage());
 
         // 1) Update bookmarks view
-        bookmarkView.update(model.state.bookmarks);
+        bookmarksView.update(model.state.bookmarks);
 
 // 2) Loading artworks
 
@@ -79,7 +79,7 @@ const controlPagination = function (gotToPage) {
 }
 
 const controlAddBookmark = function () {
-    // 1) add/remove book,ark
+    // 1) add/remove bookmark
     if (!model.state.data.bookmarked)
     model.addBookmark(model.state.data);
     else model.deleteBookmark(model.state.data.id);
@@ -89,13 +89,13 @@ const controlAddBookmark = function () {
 artworkView.update(model.state.data);
 
 // 3 Render bookmarks
-    bookmarkView.render(model.state.bookmarks);
+    bookmarksView.render(model.state.bookmarks);
 
-}
+};
 
 const controlBookmarks = function () {
-    bookmarkView.render(model.state.bookmarks);
-}
+    bookmarksView.render(model.state.bookmarks);
+};
 
 const controlAddArtwork = async function (newArtwork) {
     try {
@@ -114,7 +114,7 @@ const controlAddArtwork = async function (newArtwork) {
         addArtworkView.renderMessage();
 
     //     Render bookmark view
-        bookmarkView.render(model.state.bookmarks);
+        bookmarksView.render(model.state.bookmarks);
 
     //     Change ID in URL
         window.history.pushState(null, '', `${model.state.data.id}`);
@@ -135,7 +135,7 @@ const controlAddArtwork = async function (newArtwork) {
 
 
 const init = function () {
-    bookmarkView.addHandlerBookmarks(controlBookmarks);
+    bookmarksView.addHandlerBookmarks(controlBookmarks);
     artworkView.addHandlerRender(controlArtworks);
     artworkView.addHandlerBookmark(controlAddBookmark);
     searchView.addHandlerSearch(controlSearchResults);

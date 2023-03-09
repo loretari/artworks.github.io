@@ -114,7 +114,7 @@ export const addBookmark = function (data) {
 //     Mark current artwork as bookmark
     if (data.id === state.data.id) state.data.bookmarked = true;
 persistBookmark();
-}
+};
 
 export const deleteBookmark = function (id) {
     const index = state.bookmarks.findIndex(el => el.id === id);
@@ -123,12 +123,12 @@ export const deleteBookmark = function (id) {
 //     Mark current artwork as NOT bookmarked
     if (id === state.data.id) state.data.bookmarked = false;
     persistBookmark();
-}
+};
 
 const init = function () {
 const storage = localStorage.getItem('bookmarks');
    if (storage) state.bookmarks = JSON.parse(storage);
-}
+};
 init();
 
 const clearBookmarks = function () {
