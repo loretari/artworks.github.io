@@ -1,5 +1,5 @@
 import { async } from 'regenerator-runtime';
-// import 'core-js/stable';
+import 'core-js/stable';
 import {CONFIG_URL, ARTIC_URL, MODAL_CLOSE_SEC} from "./config";
 import {state} from "./model";
 import searchView from "./views/searchView";
