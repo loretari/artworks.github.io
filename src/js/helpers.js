@@ -1,5 +1,5 @@
 import {API_URL, TIME_OUT} from "./config";
-import 'regenerator-runtime/runtime';
+// import 'regenerator-runtime/runtime';
 
 
 
